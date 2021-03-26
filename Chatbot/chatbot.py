@@ -16,7 +16,7 @@ conv2_start = "What's your favorite book?"
 conv1 = Conversation(conv1_start)
 conv2 = Conversation(conv2_start)
 
-conversational_pipeline([conv1, conv2])
+conversational_pipeline([conv1])
 
 conv1_next = "What is it about?"
 conv2_next = "Cool, what is the genre of the book?"
@@ -24,7 +24,10 @@ conv2_next = "Cool, what is the genre of the book?"
 conv1.add_user_input(conv1_next)
 conv2.add_user_input(conv2_next)
 
-conversational_pipeline([conv1, conv2])
+conversational_pipeline([conv1])
 
-print(conv1)
-print(conv2)
+while conv1_next != "bye":
+    print(conv1)
+    conv1_next = input()
+    conv1.add_user_input(conv1_next)
+    conversational_pipeline([conv1])
