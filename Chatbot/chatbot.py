@@ -30,4 +30,4 @@ while conv1_next != "bye":
     print(conv1)
     conv1_next = input()
     conv1.add_user_input(conv1_next)
-    conversational_pipeline([conv1])
+    print(conversational_pipeline([conv1]))
