@@ -1,10 +1,9 @@
 from transformers import pipeline, Conversation
 
 
-
 conversational_pipeline = pipeline("conversational")
 
-
+first = True
 
 def convOneLine():
     conv1_start = "Let's watch a movie tonight - any recommendations?"
@@ -29,22 +28,20 @@ def convToLines():
     print(conv1)
     print(conv2)
 
-def customConversation():
+def customConversation(text,first):
+    if text == "bye":
+        pass
+    elif first == True:
+        customConv = Conversation(text)
     
-    customConv_input = input(">> ")
-    
-    customConv = Conversation(customConv_input)
-    
-    conversational_pipeline([customConv])
+        conversational_pipeline([customConv])
 
-    while customConv_input != "bye":
-        print(customConv)
-        
-        customConv_input = input(">> ")
-        customConv.add_user_input(customConv_input)
-        conversational_pipeline([customConv])    
+        return customConv
+    else:
+        customConv.add_user_input(text)
+        conversational_pipeline([customConv])
+        return customConv 
      
-customConversation()
 
     
 
